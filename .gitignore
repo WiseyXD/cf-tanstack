@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+bun.lockb
+bun.lock
+.env
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -26,3 +30,6 @@ dist-ssr
 # wrangler files
 .wrangler
 .dev.vars*
+.env
+bun.lock
+bun.lockb
