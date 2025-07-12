@@ -1,12 +1,19 @@
-export default {
-  fetch(request) {
-    const url = new URL(request.url);
+import { Hono } from "hono";
 
-    if (url.pathname.startsWith("/api/")) {
-      return Response.json({
-        name: "Cloudflare",
-      });
-    }
-    return new Response(null, { status: 404 });
-  },
-} satisfies ExportedHandler<Env>;
+export type Env = {
+  DB: D1Database;
+  DB_ID: string;
+  ACCOUNT_ID: string;
+  D1_TOKEN: string;
+  MY_VAR: string;
+};
+
+const app = new Hono<{ Bindings: Env }>();
+
+app.get("/api/", (c) =>
+  c.json({
+    name: `${c.env.MY_VAR}`,
+  }),
+);
+
+export default app;

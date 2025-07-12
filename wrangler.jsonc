@@ -12,7 +12,7 @@
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
 	"d1_databases": [
         {
             "binding": "DB",
@@ -20,7 +20,7 @@
             "database_id": "d58abe1b-8fa9-4470-be7d-4f4cd31d9a16",
             "migrations_dir": "drizzle/migrations"
         }
-    ]
+	],
 
 	/**
 	 * Smart Placement
@@ -39,7 +39,7 @@
 	 * Environment Variables
 	 * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
 	 */
-	// "vars": { "MY_VARIABLE": "production_value" },
+	"vars": { "aryan": "production_value" },
 	/**
 	 * Note: Use secrets to store sensitive data.
 	 * https://developers.cloudflare.com/workers/configuration/secrets/

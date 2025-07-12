@@ -10,12 +10,15 @@
 		"preview": "bun run build && vite preview",
 		"deploy": "bun run build && wrangler deploy",
 		"cf-typegen": "wrangler types",
-		"studio": "drizzle-kit studio"
+		"studio": "drizzle-kit studio",
+		"generate" : "drizzle-kit generate",
+		"update" : "drizzle-kit up"
 	},
 	"dependencies": {
 		"drizzle": "^1.4.0",
 		"drizzle-kit": "^0.31.1",
 		"drizzle-orm": "^0.44.2",
+		"hono": "^4.8.4",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0"
 	},
