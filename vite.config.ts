@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 
 import { cloudflare } from "@cloudflare/vite-plugin";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -12,6 +13,7 @@ export default defineConfig({
       autoCodeSplitting: true,
     }),
     ,
+    tailwindcss(),
     react(),
     cloudflare(),
   ],
