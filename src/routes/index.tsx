@@ -8,13 +8,23 @@ export const Route = createFileRoute("/")({
 function Index() {
   const getRepoData = async () => {
     console.log("fetching data");
-    const response = { name: "aryan" };
+
+    const result = await fetch("http://localhost:3000/api/trips", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer secret",
+      },
+    });
+
+    const data = await result.json();
+    console.log(data);
+    const response = { name: data };
     return response;
   };
   const { isPending, error, data } = useQuery({
     queryKey: ["repoData"],
     queryFn: getRepoData,
-    staleTime: Infinity,
   });
 
   if (isPending) return "Loading...";
