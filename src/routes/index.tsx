@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-
+import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/")({
   component: Index,
 });
@@ -19,7 +19,7 @@ function Index() {
 
     const data = await result.json();
     console.log(data);
-    const response = { name: data };
+    const response = { name: "heloo" };
     return response;
   };
   const { isPending, error, data } = useQuery({
@@ -34,6 +34,7 @@ function Index() {
   return (
     <div>
       <h1>{data.name}</h1>
+      <Button className="">Click me</Button>
     </div>
   );
 }
