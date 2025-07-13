@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
@@ -5,9 +6,24 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const getRepoData = async () => {
+    console.log("fetching data");
+    const response = { name: "aryan" };
+    return response;
+  };
+  const { isPending, error, data } = useQuery({
+    queryKey: ["repoData"],
+    queryFn: getRepoData,
+    staleTime: Infinity,
+  });
+
+  if (isPending) return "Loading...";
+
+  if (error) return "An error has occurred: " + error.message;
+
   return (
-    <div className="p-2 bg-red-500 text-white">
-      <h3>Welcome Home!</h3>
+    <div>
+      <h1>{data.name}</h1>
     </div>
   );
 }
