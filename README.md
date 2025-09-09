@@ -200,12 +200,3 @@ Teams and individuals need a fast, secure, globally-distributed file store that 
 - **DevOps:** CI/CD, staging/prod environments, backups, monitoring, cost alerts.  
 - **QA:** automated tests for auth, uploads, resume flows, share links, security checks.
 
----
-
-If you want next, I can:
-- Produce a 2-week sprint backlog with specific tickets and acceptance criteria.  
-- Produce the minimal API surface for the MVP (endpoints, request/response shapes).  
-- Produce a starter D1 schema for core tables (users, teams, files, shares).  
-- Draft a step-by-step envelope-encryption sequence for BYOK with an example KMS (e.g., AWS KMS).
-
-Which one would you like next?
