@@ -37,5 +37,4 @@ CREATE TABLE `trips` (
 	`updated_at` integer DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 --> statement-breakpoint
-CREATE UNIQUE INDEX `trips_share_code_unique` ON `trips` (`share_code`);--> statement-breakpoint
-DROP TABLE `users`;
+CREATE UNIQUE INDEX `trips_share_code_unique` ON `trips` (`share_code`);

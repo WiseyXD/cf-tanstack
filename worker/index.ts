@@ -1,3 +1,4 @@
+// worker/index.ts
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { bearerAuth } from "hono/bearer-auth";
@@ -10,8 +11,8 @@ export type Env = {
 const app = new Hono<{ Bindings: Env }>();
 const token = "secret";
 
-app.use("*", cors());
-app.use("*", bearerAuth({ token }));
+// app.use("*", cors());
+// app.use("*", bearerAuth({ token }));
 
 app.get("/api", async (c) => {
   return c.json("Hello World!");

@@ -1,5 +1,6 @@
+// worker/routes/trips.ts
 import { Hono } from "hono";
-import { drizzle } from "drizzle-orm/d1";
+import { drizzle, DrizzleD1Database } from "drizzle-orm/d1";
 import { customAlphabet } from "nanoid";
 import { tripMembers, trips } from "../../drizzle/schema";
 import { eq } from "drizzle-orm";
@@ -10,28 +11,38 @@ type Env = {
 
 const tripsRouter = new Hono<{ Bindings: Env }>();
 
-async function generateShareCode(db: any) {
-  let code;
+// Define a type for your Drizzle client instance
+type MyDrizzleDb = DrizzleD1Database<Record<string, never>>; // or appropriate schema type if you have one
+
+// Strictly type the 'db' parameter
+async function generateShareCode(db: MyDrizzleDb): Promise<string> {
+  let code: string; // Declare code as string
   let isUnique = false;
   let attempts = 0;
-  let maxAttempts = 10;
+  const maxAttempts = 10;
 
   while (!isUnique && attempts < maxAttempts) {
     code = customAlphabet("23456789ABCDEFGHJKMNPQRSTUVWXYZ", 6)();
-    const results = await db
+
+    // The .get() method returns either the row or undefined if not found
+    const result = await db
       .select()
       .from(trips)
       .where(eq(trips.shareCode, code))
-      .get();
-    isUnique = !results;
+      .get(); // result will be Trip | undefined
+
+    isUnique = !result; // If result is undefined, it's unique
     attempts++;
   }
 
   if (!isUnique) {
-    throw new Error("Failed to generate unique share code.");
+    // If we exit the loop without a unique code, throw an error
+    throw new Error(
+      "Failed to generate unique share code after multiple attempts.",
+    );
   }
 
-  return code!;
+  return code!; // 'code' will definitely be assigned here
 }
 
 // get all trips
@@ -47,6 +58,8 @@ tripsRouter.post("/", async (c) => {
   const db = drizzle(c.env.DB);
   const { name, description } = await c.req.json();
   const shareCode = await generateShareCode(db);
+  console.log("generating share code", shareCode);
+  console.log("name", name);
 
   // generate a random share code
   const results = await db.insert(trips).values({

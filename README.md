@@ -1,6 +1,19 @@
 # React + TypeScript + Vite
 
+
+# My setup steps
+First step : Create a new D1 DB with 
+
+```
+bunx wrangler d1 create <db_name>
+
+```
+Secondly : Change the package.json to use the new d1 db name
+
+Thirdly : use the .dev.vars for environment variables along with .env
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
 
 Currently, two official plugins are available:
 

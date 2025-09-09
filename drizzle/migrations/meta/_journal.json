@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "6",
-      "when": 1752332437035,
-      "tag": "0000_living_reavers",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1752378669119,
-      "tag": "0001_purple_sleeper",
+      "when": 1757313582535,
+      "tag": "0000_plain_lorna_dane",
       "breakpoints": true
     }
   ]

@@ -61,6 +61,7 @@ export function JoinTrip() {
       return response.data;
     },
     onSuccess: () => {
+      console.log("Successfully joined trip");
       joinForm.reset();
       setIsDialogOpen(false);
     },
